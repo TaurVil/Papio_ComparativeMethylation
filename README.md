@@ -5,3 +5,6 @@ Re-analysis of DNA methylation patterns in papio baboons, published in Molecular
 Redo mapping and analysis of published results for the new genome version. 
 Useful for followup work in other studies to identify overlap in differentially methylated sites
 
+## Processing Scripts
+set.01.sh : get and map data
+set.02.sh : call genotypes from bam file
