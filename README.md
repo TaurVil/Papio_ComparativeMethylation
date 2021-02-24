@@ -9,5 +9,7 @@ Useful for followup work in other studies to identify overlap in differentially 
 
 set.01.sh : get and map data, quality metrics
 
-set.02.sh : call genotypes from bam file
+set.02.sh : call genotypes from bam file. Produces the file "cleaned.genotypes_matrix.txt"
+
+set.03.sh : get count data for the autosomes. Remove sites that are variable in the bisSNP calls or based on the methratio files. 
 
