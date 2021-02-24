@@ -19,3 +19,8 @@ fread("merged.012.pos") -> pos; pos$site <- paste(pos$V1 , pos$V2, sep="_")
 as.data.frame(d) -> d; d[-1,] -> d
 pos$site -> row.names(d)
 write.table(d, "cleaned.genotype_matrix.txt", row.names=T, col.names=T, sep="\t", quote=F)
+
+
+sed -i 's/-1/NA/g' cleaned.genotype_matrix.txt
+
+## at this point there are 963,160 variants
