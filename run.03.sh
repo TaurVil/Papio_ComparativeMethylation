@@ -10,7 +10,7 @@
   head -1 info_chr1.txt > n44.info.txt
   for f in `seq 1 20`; do cat counts_table_chr$f.txt >> n44.counts.txt;  
     sed '1d' info_chr$f.txt | sed 's/"//g' >> n44.info.txt; 
-    cat mcounts_table_chr$f.txt >> n44.mcounts.txt; done
+    sed '1d' mcounts_table_chr$f.txt >> n44.mcounts.txt; done
 
 # only keeping the autosomes
 
@@ -43,6 +43,21 @@
 	# vcftools --gzvcf known_variants.vcf.gz --012 --out known_variants
 	# vcftools --gzvcf known_variants.vcf.gz --remove-filtered-all --mac 2 --max-alleles 2 --minQ 100 --012 --out filtered_variants
 			
-  
+## Export R data object to use for future analyses
+## Remove non-variable sites
+
+  library(data.table); fread("./n44.nonvariable.txt") -> keep
+
+  fread("./n44.info.txt") -> info
+  fread("./n44.counts.txt") -> c
+  fread("./n44.mcounts.txt") -> m
+
+  m[,-1] -> m; colnames(m) <- colnames(c)
+
+  c[info$site %in% keep$V4,] -> c
+  m[info$site %in% keep$V4,] -> m
+  info[info$site %in% keep$V4,] -> info
+
+  rm(keep); save.image("./n44.raw_count_data.RData")
   
   
