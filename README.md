@@ -11,9 +11,11 @@ set.01.sh : get and map data, quality metrics
 
 set.02.sh : call genotypes from bam file. Produces the file "cleaned.genotypes_matrix.txt". 
 
-set.03.sh : get count data for the autosomes. Remove sites that are variable in the bisSNP calls or based on the methratio files. n44 info and count files. 
+set.03.sh : get count data for the autosomes. Remove sites that are variable in the bisSNP calls or based on the methratio files. n44 info and count files, saved within n44.raw_count_data.RData
 
-set.04.sh : hardac based models, namely regressing counts out and ANOVA
+set.04.sh : hardac based models, namely regressing counts out, ANOVA, and macau
+
+set.05.sh : define genomic contexts
 
 ## Analysis Scripts
 
