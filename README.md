@@ -9,9 +9,11 @@ Useful for followup work in other studies to identify overlap in differentially 
 
 set.01.sh : get and map data, quality metrics
 
-set.02.sh : call genotypes from bam file. Produces the file "cleaned.genotypes_matrix.txt". 
+set.02.sh : call genotypes from bam file. Produces the file "cleaned.genotypes_matrix.txt" for 012 matrices and the merged.vcf.gz file. Contains all 20 autosomes and the 2 sex chromosomes. 
 
 set.03.sh : get count data for the autosomes. Remove sites that are variable in the bisSNP calls or based on the methratio files. n44 info and count files, saved within n44.raw_count_data.RData
+
+After step 3, I did a lot of cleaning. Statistics and intermediate count files and bams were stored in "archived" and moved to a local hard drive. Fastq files (trimmed and raw) were removed and can be re-downloaded from SRA following set.01.sh. Genotypes by chormosome were removed and can be extracted from the total genotype file. Methratio folder was removed after zipping into a tar.gz file called "methratio_files.tar.gz" and stored in the archive. 
 
 set.04.sh : hardac based models, namely regressing counts out, ANOVA, and macau
 
