@@ -58,6 +58,8 @@
   m[info$site %in% keep$V4,] -> m
   info[info$site %in% keep$V4,] -> info
 
-  rm(keep); save.image("./n44.raw_count_data.RData")
+  rm(keep); save.image("../n44.raw_count_data.RData")
+  ## retains 1,014,362 sites out of 1,015,557 
   
-  
+### Zip up methratio folder, we should be done with it
+tar -cvfz methratio_files.tar.gz methratio/
