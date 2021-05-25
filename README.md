@@ -13,14 +13,14 @@ set.02.sh : call genotypes from bam file. Produces the file "cleaned.genotypes_m
 
 set.03.sh : get count data for the autosomes. Remove sites that are variable in the bisSNP calls or based on the methratio files. n44 info and count files, saved within n44.raw_count_data.RData
 
-After step 3, I did a lot of cleaning. Statistics and intermediate count files and bams were stored in "archived" and moved to a local hard drive. Fastq files (trimmed and raw) were removed and can be re-downloaded from SRA following set.01.sh. Genotypes by chormosome were removed and can be extracted from the total genotype file. Methratio folder was removed after zipping into a tar.gz file called "methratio_files.tar.gz" and stored in the archive. 
+After step 3, I did a lot of cleaning. Statistics and intermediate count files and bams were stored in "archived" and moved to a local hard drive. Fastq files (trimmed and raw) were removed and can be re-downloaded from SRA following set.01.sh. Genotypes by chromosome were removed and can be extracted from the total genotype file. Methratio folder was removed after zipping into a tar.gz file called "methratio_files.tar.gz" and stored in the archive. 
 
 set.04.sh : hardac based models, namely regressing counts out, ANOVA, and macau
 
 set.05.sh : define genomic contexts
 
-## Analysis Scripts
+## Local Analysis Scripts
 
-GenotypeStructure.Rmd : plots but no additional files
-
+01_GenotypeStructure.Rmd : Fig S8. Includes other QC plots, but no output files. 
+02_Convert_Raw_Counts_to_Continuous_Data.R : Calculates ratios, counts regressed out, and mvalues from n44.raw_count_data.Rmd. Here we discover a subset of sites with methylation level > 1, which we remove and refilter the info and count file for. We are left with 979,099 sites with >= 5x coverage in each species. The outcome file is saved as n44.continuous_data.RData; we won't return to the raw counts again until modeling methylation counts directly. 
 
