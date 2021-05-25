@@ -62,4 +62,4 @@
   ## retains 1,014,362 sites out of 1,015,557 
   
 ### Zip up methratio folder, we should be done with it
-tar -cvfz methratio_files.tar.gz methratio/
+tar -cvzf methratio_files.tar.gz methratio/
