@@ -26,3 +26,5 @@ set.05.sh : define genomic contexts
 **02_Convert_Raw_Counts_to_Continuous_Data.R** : Calculates ratios, counts regressed out, and mvalues from n44.raw_count_data.Rmd. Here we discover a subset of sites with methylation level > 1, which we remove and refilter the info and count file for. We are left with 979,099 sites with >= 5x coverage in each species; we had already filtered for sites covered in 1/2 the dataset. The outcome file is saved as **n44.continuous_data.RData**; we're done with the raw data file (n44.raw_count_data.RData) and that's moved to the archive. 
 
 **03_MethylationStructure.Rmd** : Fig 1A & B. Fig S2. Procrustes analysis. 
+
+**04_Anova.R** : ANOVA analysis for sites with intermediate methylation (with 10 permutations). Note that our requirement of 5x coverage per species retains ~250k sites with intermediate methylation vs ~700k in the original paper (which required 5x coverage across all samples only). Saves output (ANOVA results only) as **n44.anova.RData**.
