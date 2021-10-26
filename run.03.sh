@@ -3,8 +3,9 @@
 # Convert individual mratio files into a single matrix for methylated and unmethylated counts
   cd /data/tunglab/tpv/CM
   ls methratio/*methratio.txt > methratio/methratio_files.txt
-  for f in `cat 00_chroms.txt`; do cat run.c1.get_counts_part1.sh | sed -e s/CHROMNAME/$f/g > get_data.$f.sh; sbatch -N 1 --mem=10000 -p all --nice ./get_data.$f.sh; done
-  cd methratio; module load R; for f in `cat ../00_chroms.txt`; do cat ../run.c2.get_counts_part2.R | sed -e s/CHROMNAME/$f/g > $f.get_data.R; sbatch -N 1 --mem=10000 -p all --nice ./$f.get_data.R; done; cd ..
+  module load bedtools2; for f in `cat 00_chroms.txt`; do cat run.c1.get_counts_part1.sh | sed -e s/CHROMNAME/$f/g > get_data.$f.sh; sbatch -N 1 --mem=10000 -p all --nice ./get_data.$f.sh; done
+  conda activate r-env 
+  cd methratio; for f in `cat ../00_chroms.txt`; do cat ../run.c2.get_counts_part2.R | sed -e s/CHROMNAME/$f/g > $f.get_data.R; sbatch -N 1 --mem=10000 -p all --nice ./$f.get_data.R; done; cd ..
 
 # Merge into one file for counts, mcounts, and info
   head -1 info_chr1.txt > n44.info.txt
@@ -59,6 +60,11 @@
   info[info$site %in% keep$V4,] -> info
 
   rm(keep); save.image("../n44.raw_count_data.RData")
+
+  ## Specially pull out sites for yellow-anubis analyses 
+  info$n_anu <- 9-rowSums(c[,1:9] == 0)
+  info$n_yel <- 6-rowSums(c[,34:39] == 0)
+
   ## retains 1,014,362 sites out of 1,015,557 
   
 ### Zip up methratio folder, we should be done with it
