@@ -1,6 +1,5 @@
 # Get genomic contexts that matter
 
-
 # genes, enhancers, and cpg islands from Vilgalys & Fogel et al. bioRxiv are used to define regions of the genome. 
 ## for genes we only want protein coding genes
 mkdir contexts 
